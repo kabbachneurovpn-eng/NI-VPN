@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kabbach Neuro-VPN | Interface</title>
+    <style>
+        /* إعدادات التصميم العام - روح السايبربانك */
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        /* حاوية الصفحة */
+        .wrapper {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* قسم الهوية والاشتراك */
+        .header-section {
+            text-align: center;
+            padding: 40px 10px;
+            border-bottom: 1px solid #1a1a1a;
+        }
+
+        .header-section h1 {
+            font-size: 1.8rem;
+            line-height: 1.4;
+            margin-bottom: 25px;
+            letter-spacing: -0.5px;
+        }
+
+        .subscribe-form {
+            display: flex;
+            gap: 10px;
+            background: #111;
+            padding: 5px;
+            border-radius: 12px;
+            border: 1px solid #222;
+        }
+
+        .subscribe-form input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: white;
+            padding: 12px;
+            outline: none;
+            font-size: 0.9rem;
+        }
+
+        .subscribe-form button {
+            background: #ffffff;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .subscribe-form button:hover {
+            background: #cccccc;
+        }
+
+        /* شبكة الصور المطورة (Grid) */
+        .grid-title {
+            font-size: 1.1rem;
+            margin: 30px 0 15px 0;
+            color: #888;
+            text-align: right;
+        }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .item-card {
+            background: #0a0a0a;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid #1a1a1a;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .item-card:hover {
+            transform: translateY(-5px);
+            border-color: #333;
+        }
+
+        .item-card img {
+            width: 100%;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            display: block;
+            filter: brightness(0.9);
+        }
+
+        .item-info {
+            padding: 8px;
+            text-align: center;
+        }
+
+        .price {
+            font-size: 0.85rem;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        /* تأثير التوهج الخفيف أسفل البطاقات */
+        .item-card {
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+
+        /* لضبط الشكل على الشاشات الصغيرة جداً */
+        @media (max-width: 400px) {
+            .main-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="header-section">
+        <h1>Subscribe to receive email updates from kabbach imad.</h1>
+        <form class="subscribe-form">
+            <input type="email" placeholder="kabbach.neuro.vpn@gmail.com" required>
+            <button type="submit">Subscribe</button>
+        </form>
+    </div>
+
+    <div class="grid-title">مقترحات حصرية لك</div>
+    
+    <div class="main-grid">
+        <div class="item-card">
+            <img src="https://via.placeholder.com/300/111/fff?text=Product+1" alt="Product">
+            <div class="item-info"><div class="price">25 $US</div></div>
+        </div>
+        <div class="item-card">
+            <img src="https://via.placeholder.com/300/111/fff?text=Product+2" alt="Product">
+            <div class="item-info"><div class="price">530 $US</div></div>
+        </div>
+        <div class="item-card">
+            <img src="https://via.placeholder.com/300/111/fff?text=Product+3" alt="Product">
+            <div class="item-info"><div class="price">1,27 $US</div></div>
+        </div>
+        <div class="item-card">
+            <img src="https://via.placeholder.com/300/111/fff?text=Product+4" alt="Product">
+            <div class="item-info"><div class="price">27,57 $US</div></div>
+        </div>
+        <div class="item-card">
+            <img src="https://via.placeholder.com/300/111/fff?text=Product+5" alt="Product">
+            <div class="item-info"><div class="price">259 $US</div></div>
+        </div>
+        <div class="item-card">
+            <img src="https://via.placeholder.com/300/111/fff?text=Product+6" alt="Product">
+            <div class="item-info"><div class="price">2,50 $US</div></div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+
