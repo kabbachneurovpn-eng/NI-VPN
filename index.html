@@ -2,56 +2,47 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEURO-INSULIN | السيادة</title>
+    <title>Neuro-Insulin VPN | السيادة الرقمية</title>
     <style>
-        body {
-            background-color: #000;
-            color: #00FF41;
-            font-family: 'Courier New', Courier, monospace;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-            overflow: hidden;
-            text-shadow: 0 0 8px #00FF41;
-        }
-        .matrix-box {
-            border: 2px solid #00FF41;
-            padding: 30px;
-            background: rgba(0, 20, 0, 0.9);
-            box-shadow: 0 0 20px #00FF41;
-            max-width: 80%;
-            text-align: center;
-        }
-        .saj-text {
-            font-size: 1.5rem;
-            line-height: 2;
-            font-weight: bold;
-        }
-        .glitch { animation: scan 0.5s infinite; }
-        @keyframes scan {
-            0% { opacity: 1; }
-            50% { opacity: 0.7; }
-            100% { opacity: 1; }
-        }
-        hr { border: 0; border-top: 1px solid #00FF41; margin: 20px 0; }
+        body { margin: 0; background: black; color: #00FF41; font-family: 'Courier New', Courier, monospace; overflow: hidden; }
+        canvas { position: absolute; top: 0; left: 0; z-index: -1; }
+        .content { position: relative; z-index: 1; text-align: center; padding-top: 10%; text-shadow: 0 0 10px #00FF41; }
+        h1 { font-size: 3rem; border: 2px solid #00FF41; display: inline-block; padding: 20px; }
+        p { font-size: 1.5rem; background: rgba(0,0,0,0.8); }
     </style>
 </head>
 <body>
-    <div class="matrix-box">
-        <h1 class="glitch">NEURO-INSULIN VPN</h1>
-        <hr>
-        <div class="saj-text">
-            يا باحثاً عن الأمان.. في زمنٍ فقدَ العنوان <br>
-            إليك حصنُ العقل.. ومنبعُ الفصل <br>
-            نحنُ للسيادةِ عنوان.. وللتشتيتِ نسيان <br>
-            ادخل عالمنا بيقين.. فأنتَ مع "نيرو-إنسولين" <br>
-        </div>
-        <hr>
-        <p>[ الجلسة مشفرة.. السيادةُ مستمرة ]</p>
+    <canvas id="matrix"></canvas>
+    <div class="content">
+        <h1>Neuro-Insulin VPN</h1>
+        <p>مرحباً بك في عصر "السيادة الرقمية"</p>
+        <p>"أرض الكلاي زائلة.. والعقار الرقمي هو البقاء"</p>
     </div>
+
+    <script>
+        const canvas = document.getElementById('matrix');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        const fontSize = 16;
+        const columns = canvas.width / fontSize;
+        const drops = Array(Math.floor(columns)).fill(1);
+
+        function draw() {
+            ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "#00FF41";
+            ctx.font = fontSize + "px arial";
+            for (let i = 0; i < drops.length; i++) {
+                const text = letters.charAt(Math.floor(random() * letters.length));
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+                drops[i]++;
+            }
+        }
+        function random() { return Math.random(); }
+        setInterval(draw, 33);
+    </script>
 </body>
 </html>
-
