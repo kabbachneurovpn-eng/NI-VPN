@@ -3,43 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neuro-Insulin VPN | السيادة الرقمية</title>
+    <title>NEURO-INSULIN | السيادة</title>
     <style>
         body {
             background-color: #000;
-            color: #00FF41; /* لون الماتريكس الشهير */
+            color: #00FF41;
             font-family: 'Courier New', Courier, monospace;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
             height: 100vh;
             margin: 0;
             overflow: hidden;
-            text-shadow: 0 0 5px #00FF41;
+            text-shadow: 0 0 8px #00FF41;
         }
-        .container {
-            text-align: center;
-            border: 1px solid #00FF41;
-            padding: 40px;
+        .matrix-box {
+            border: 2px solid #00FF41;
+            padding: 30px;
+            background: rgba(0, 20, 0, 0.9);
             box-shadow: 0 0 20px #00FF41;
+            max-width: 80%;
+            text-align: center;
         }
-        h1 { font-size: 2.5rem; }
-        p { font-size: 1.2rem; line-height: 1.8; }
-        .glitch { animation: flash 2s infinite; }
-        @keyframes flash {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
+        .saj-text {
+            font-size: 1.5rem;
+            line-height: 2;
+            font-weight: bold;
         }
+        .glitch { animation: scan 0.5s infinite; }
+        @keyframes scan {
+            0% { opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+        hr { border: 0; border-top: 1px solid #00FF41; margin: 20px 0; }
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="matrix-box">
         <h1 class="glitch">NEURO-INSULIN VPN</h1>
-        <p>مرحباً بك في عالم السيادة.. حيث العقل هو القيادة.</p>
-        <p>نحن لا نبيع وهماً، بل نصنع حصناً.</p>
-        <hr style="border-color: #00FF41;">
-        <p style="font-size: 0.9rem;">[ النظام قيد التشفير ]</p>
+        <hr>
+        <div class="saj-text">
+            يا باحثاً عن الأمان.. في زمنٍ فقدَ العنوان <br>
+            إليك حصنُ العقل.. ومنبعُ الفصل <br>
+            نحنُ للسيادةِ عنوان.. وللتشتيتِ نسيان <br>
+            ادخل عالمنا بيقين.. فأنتَ مع "نيرو-إنسولين" <br>
+        </div>
+        <hr>
+        <p>[ الجلسة مشفرة.. السيادةُ مستمرة ]</p>
     </div>
 </body>
 </html>
