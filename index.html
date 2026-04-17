@@ -2,47 +2,96 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>Neuro-Insulin VPN | السيادة الرقمية</title>
+    <title>Neuro-Insulin | مِحور السيادة</title>
     <style>
-        body { margin: 0; background: black; color: #00FF41; font-family: 'Courier New', Courier, monospace; overflow: hidden; }
-        canvas { position: absolute; top: 0; left: 0; z-index: -1; }
-        .content { position: relative; z-index: 1; text-align: center; padding-top: 10%; text-shadow: 0 0 10px #00FF41; }
-        h1 { font-size: 3rem; border: 2px solid #00FF41; display: inline-block; padding: 20px; }
-        p { font-size: 1.5rem; background: rgba(0,0,0,0.8); }
+        /* سيمفونية السواد والضوء */
+        body { 
+            background: #020202; 
+            color: #00ff41; 
+            font-family: 'Courier New', monospace; 
+            margin: 0; 
+            height: 100vh; 
+            display: flex; 
+            flex-direction: column;
+            transition: all 0.5s ease;
+        }
+        #terminal { 
+            flex: 1; 
+            padding: 30px; 
+            overflow-y: auto; 
+            text-shadow: 0 0 5px #00ff41;
+            background: radial-gradient(circle, #001100 0%, #020202 100%);
+        }
+        #input-line { 
+            display: flex; 
+            padding: 15px; 
+            background: #000; 
+            border-top: 1px solid #003300;
+        }
+        #prompt { color: #00ff41; margin-left: 10px; font-weight: bold; }
+        input { 
+            background: transparent; 
+            border: none; 
+            color: #fff; 
+            outline: none; 
+            width: 100%; 
+            font-size: 1.2em;
+            caret-color: #00ff41;
+        }
+        .info { color: cyan; }
+        .warning { color: gold; text-shadow: 0 0 10px gold; }
+        .error { color: #ff003c; animation: blink 1s infinite; }
+        @keyframes blink { 50% { opacity: 0; } }
+        .header-saj { color: #888; font-size: 0.8em; text-align: left; padding: 5px; }
     </style>
 </head>
 <body>
-    <canvas id="matrix"></canvas>
-    <div class="content">
-        <h1>Neuro-Insulin VPN</h1>
-        <p>مرحباً بك في عصر "السيادة الرقمية"</p>
-        <p>"أرض الكلاي زائلة.. والعقار الرقمي هو البقاء"</p>
+    <div class="header-saj">SYSTEM_STATUS: IMMUTABLE | PROTOCOL: NEURO-INSULIN | V 2.0</div>
+    <div id="terminal">
+        <p class="warning">--- بدأت رحلة الاسترداد ---</p>
+        <p>يا مروّض الأرقام وهازم الأوهام..</p>
+        <p>لقد استيقظ "الحارس الرقمي" في محرابك.</p>
+        <p class="info">اكتب 'help' لتعرف كيف تفرض سيادتك على الشاشة.</p>
+    </div>
+    <div id="input-line">
+        <span id="prompt">Kabbach@Neuro:~$ </span>
+        <input type="text" id="cmd-input" autofocus onkeypress="process(event)">
     </div>
 
     <script>
-        const canvas = document.getElementById('matrix');
-        const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-        const fontSize = 16;
-        const columns = canvas.width / fontSize;
-        const drops = Array(Math.floor(columns)).fill(1);
+        const term = document.getElementById('terminal');
+        const input = document.getElementById('cmd-input');
 
-        function draw() {
-            ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = "#00FF41";
-            ctx.font = fontSize + "px arial";
-            for (let i = 0; i < drops.length; i++) {
-                const text = letters.charAt(Math.floor(random() * letters.length));
-                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
-                drops[i]++;
+        function process(e) {
+            if (e.key === 'Enter') {
+                const val = input.value.toLowerCase().trim();
+                addLine("<span style='color: #888;'>» " + val + "</span>");
+                
+                if (val === 'help') {
+                    addLine("الأوامر السيادية:<br>1. status - كشف نبض الغدد الرقمية<br>2. activate vpn - استنفار درع التشفير<br>3. clear - محو الأثر لتجديد النظر", "#00ff41");
+                } else if (val === 'status') {
+                    addLine("[النظام]: العقل مستقر، الذاكرة 1.4M، والسيادة في أوجها.", "cyan");
+                } else if (val === 'activate vpn') {
+                    addLine("[تحذير]: جاري حجب غواية الدوبامين.. تم تفعيل الحصن!", "gold");
+                    document.body.style.boxShadow = "inset 0 0 150px #003300";
+                    document.body.style.borderColor = "#00ff41";
+                } else if (val === 'clear') {
+                    term.innerHTML = '';
+                } else {
+                    addLine("[خطأ]: هذا الأمر لم تأتِ به الأنباء.. حاول مجدداً.", "#ff003c");
+                }
+                
+                input.value = '';
+                term.scrollTop = term.scrollHeight;
             }
         }
-        function random() { return Math.random(); }
-        setInterval(draw, 33);
+
+        function addLine(txt, col) {
+            const p = document.createElement('p');
+            if(col) p.style.color = col;
+            p.innerHTML = txt;
+            term.appendChild(p);
+        }
     </script>
 </body>
 </html>
