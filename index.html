@@ -1,97 +1,101 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>Neuro-Insulin | مِحور السيادة</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neuro-Insulin VPN | السيادة الرقمية</title>
     <style>
-        /* سيمفونية السواد والضوء */
-        body { 
-            background: #020202; 
-            color: #00ff41; 
-            font-family: 'Courier New', monospace; 
-            margin: 0; 
-            height: 100vh; 
-            display: flex; 
+        /* تنسيقات عامة */
+        body {
+            background-color: #0a0a0a; /* أسود عميق */
+            color: #00ff41; /* أخضر مصفوفة (Matrix) */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            display: flex;
             flex-direction: column;
-            transition: all 0.5s ease;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow-x: hidden;
         }
-        #terminal { 
-            flex: 1; 
-            padding: 30px; 
-            overflow-y: auto; 
-            text-shadow: 0 0 5px #00ff41;
-            background: radial-gradient(circle, #001100 0%, #020202 100%);
+
+        /* حاوية المحتوى */
+        .container {
+            text-align: center;
+            padding: 20px;
+            border: 1px solid #00ff41;
+            box-shadow: 0 0 15px #00ff41;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+            max-width: 600px;
         }
-        #input-line { 
-            display: flex; 
-            padding: 15px; 
-            background: #000; 
-            border-top: 1px solid #003300;
+
+        h1 {
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 10px #00ff41;
         }
-        #prompt { color: #00ff41; margin-left: 10px; font-weight: bold; }
-        input { 
-            background: transparent; 
-            border: none; 
-            color: #fff; 
-            outline: none; 
-            width: 100%; 
-            font-size: 1.2em;
-            caret-color: #00ff41;
+
+        p {
+            color: #00d1ff; /* أزرق تقني */
+            font-size: 1.2rem;
+            line-height: 1.6;
         }
-        .info { color: cyan; }
-        .warning { color: gold; text-shadow: 0 0 10px gold; }
-        .error { color: #ff003c; animation: blink 1s infinite; }
-        @keyframes blink { 50% { opacity: 0; } }
-        .header-saj { color: #888; font-size: 0.8em; text-align: left; padding: 5px; }
+
+        /* زر الإجراء */
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 30px;
+            color: #000;
+            background-color: #00ff41;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #00d1ff;
+            box-shadow: 0 0 20px #00d1ff;
+        }
+
+        /* تأثير تقني بسيط */
+        .scan-line {
+            width: 100%;
+            height: 2px;
+            background: rgba(0, 255, 65, 0.2);
+            position: absolute;
+            top: 0;
+            animation: scan 4s linear infinite;
+        }
+
+        @keyframes scan {
+            0% { top: 0; }
+            100% { top: 100%; }
+        }
     </style>
 </head>
 <body>
-    <div class="header-saj">SYSTEM_STATUS: IMMUTABLE | PROTOCOL: NEURO-INSULIN | V 2.0</div>
-    <div id="terminal">
-        <p class="warning">--- بدأت رحلة الاسترداد ---</p>
-        <p>يا مروّض الأرقام وهازم الأوهام..</p>
-        <p>لقد استيقظ "الحارس الرقمي" في محرابك.</p>
-        <p class="info">اكتب 'help' لتعرف كيف تفرض سيادتك على الشاشة.</p>
+    <div class="scan-line"></div>
+    
+    <div class="container">
+        <h1>Neuro-Insulin VPN</h1>
+        <p>نظام متطور للتحكم في التركيز وحماية الخصوصية الرقمية.</p>
+        <p>مرحباً بك في عصر السيادة الرقمية الجديد.</p>
+        
+        <div style="margin-top: 30px;">
+            <a href="#" class="btn">ابدأ الاتصال الآمن</a>
+        </div>
     </div>
-    <div id="input-line">
-        <span id="prompt">Kabbach@Neuro:~$ </span>
-        <input type="text" id="cmd-input" autofocus onkeypress="process(event)">
-    </div>
 
-    <script>
-        const term = document.getElementById('terminal');
-        const input = document.getElementById('cmd-input');
-
-        function process(e) {
-            if (e.key === 'Enter') {
-                const val = input.value.toLowerCase().trim();
-                addLine("<span style='color: #888;'>» " + val + "</span>");
-                
-                if (val === 'help') {
-                    addLine("الأوامر السيادية:<br>1. status - كشف نبض الغدد الرقمية<br>2. activate vpn - استنفار درع التشفير<br>3. clear - محو الأثر لتجديد النظر", "#00ff41");
-                } else if (val === 'status') {
-                    addLine("[النظام]: العقل مستقر، الذاكرة 1.4M، والسيادة في أوجها.", "cyan");
-                } else if (val === 'activate vpn') {
-                    addLine("[تحذير]: جاري حجب غواية الدوبامين.. تم تفعيل الحصن!", "gold");
-                    document.body.style.boxShadow = "inset 0 0 150px #003300";
-                    document.body.style.borderColor = "#00ff41";
-                } else if (val === 'clear') {
-                    term.innerHTML = '';
-                } else {
-                    addLine("[خطأ]: هذا الأمر لم تأتِ به الأنباء.. حاول مجدداً.", "#ff003c");
-                }
-                
-                input.value = '';
-                term.scrollTop = term.scrollHeight;
-            }
-        }
-
-        function addLine(txt, col) {
-            const p = document.createElement('p');
-            if(col) p.style.color = col;
-            p.innerHTML = txt;
-            term.appendChild(p);
-        }
-    </script>
+    <footer style="margin-top: 20px; font-size: 0.8rem; color: #555;">
+        &copy; 2026 جميع الحقوق محفوظة لمشروع Neuro-Insulin
+    </footer>
 </body>
 </html>
+
