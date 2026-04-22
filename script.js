@@ -1,10 +1,17 @@
-function enterWithFocus() {
-    document.getElementById('sovereignty-gateway').style.display = 'none';
-    console.log("User entered with conscious intent.");
-}
-
-function backToSovereignty() {
-    alert("قرار حكيم. العودة لبيئة العمل السيادية...");
-    window.location.href = "about:blank"; // أو توجيهه لصفحة المهام الخاصة بك
+function activateSovereignty() {
+    const msg = document.getElementById('status-message');
+    const gate = document.getElementById('gateway');
+    
+    msg.innerText = "جاري تفعيل درع التركيز...";
+    
+    setTimeout(() => {
+        gate.style.borderColor = "#fff";
+        gate.innerHTML = `
+            <h1 style="color: #fff;">تم تفعيل السيادة</h1>
+            <p>أنت الآن في منطقة العمل العميق.</p>
+            <button class="btn-gate" onclick="location.reload()">إغلاق البوابة</button>
+        `;
+        console.log("Sovereignty status: FREE & ACTIVE");
+    }, 1500);
 }
 
