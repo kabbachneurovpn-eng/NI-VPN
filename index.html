@@ -1,54 +1,18 @@
-cat << 'EOF' > index.html
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <title>Neuro-Insulin VPN</title>
-    <style>
-        body { margin: 0; background: #000; overflow: hidden; font-family: monospace; }
-        canvas { display: block; }
-        .overlay {
-            position: absolute; top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            color: #00ff41; text-align: center;
-            background: rgba(0,0,0,0.85); padding: 30px;
-            border: 2px solid #00ff41; box-shadow: 0 0 20px #00ff41;
-            z-index: 10; font-family: 'Courier New', monospace;
-        }
-    </style>
-</head>
-<body>
-    <canvas id="matrix"></canvas>
-    <div class="overlay">
-        <h1>NEURO-INSULIN</h1>
-        <p>نظام التشفير العصبي: <span style="color:white">مفعّل</span></p>
+
+<div id="sovereignty-gateway" class="gateway-overlay">
+    <div class="gateway-content" style="text-align: center; border: 2px solid #00ff41; padding: 40px; background: rgba(0,0,0,0.9);">
+        <h2 class="neon-text">نظام نيورو-انسولين: بوابة الوعي</h2>
+        <p style="color: #00ff41;">[!] تنبيه: أنت على وشك مغادرة منطقة التركيز السيادي.</p>
+        <p style="color: #fff;">الوصول مجاني، ولكن الوقت لا يقدر بثمن.</p>
+        
+        <div class="action-buttons" style="margin-top: 30px;">
+            <button onclick="enterWithFocus()" style="background: transparent; border: 1px solid #00ff41; color: #00ff41; padding: 10px 20px; cursor: pointer;">
+                دخـول بوعـي
+            </button>
+            <button onclick="backToSovereignty()" style="background: #00ff41; border: none; color: black; padding: 10px 20px; margin-left: 10px; cursor: pointer; font-weight: bold;">
+                تراجع (حماية التركيز)
+            </button>
+        </div>
     </div>
-    <script>
-        const canvas = document.getElementById('matrix');
-        const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        const chars = "ذضظغ0123456789@#$%^&*".split("");
-        const drops = Array(Math.floor(canvas.width / 16)).fill(1);
-        function draw() {
-            ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = "#00ff41";
-            ctx.font = "16px monospace";
-            for (let i = 0; i < drops.length; i++) {
-                const text = chars[Math.floor(Math.random() * chars.length)];
-                ctx.fillText(text, i * 16, drops[i] * 16);
-                if (drops[i] * 16 > canvas.height && Math.random() > 0.975) drops[i] = 0;
-                drops[i]++;
-            }
-        }
-        setInterval(draw, 33);
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        });
-    </script>
-</body>
-</html>
-EOF
+</div>
 
