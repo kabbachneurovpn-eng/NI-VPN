@@ -1,0 +1,53 @@
+#!/bin/bash
+
+# تعريف الألوان
+GREEN='\033[0;32m'
+CYAN='\033[0;36m'
+RED='\033[0;31m'
+YELLOW='\033[1;33m'
+NC='\033[0m'
+
+clear
+
+# 1. تأثير Matrix السريع عند البدء
+echo -e "${GREEN}Initializing Neuro-Protocol..."
+for i in {1..15}; do
+    echo -e "  $((RANDOM%2)) $((RANDOM%2))  $((RANDOM%2)) $((RANDOM%2))  $((RANDOM%2))"
+    sleep 0.03
+done
+
+# 2. شعار البرنامج
+echo -e "${CYAN}"
+echo "#######################################"
+echo "#      NEURO-INSULIN VPN v1.0         #"
+echo "#    Digital Sovereignty Protocol     #"
+echo "#######################################${NC}"
+
+# 3. التحقق من المدخلات
+if [ -z "$1" ]; then
+    echo -e "${RED}Error: Please specify dose duration.${NC}"
+    echo -e "Usage: ./neurovpn [minutes]"
+    exit 1
+fi
+
+# 4. تشغيل محرك البايثون في الخلفية (اختياري حسب حاجتك)
+# python3 neuro_engine.py $1 & 
+
+# 5. العداد التنازلي الحي (The Live Timer)
+MINUTES=$1
+SECONDS=0
+TOTAL_SECONDS=$((MINUTES * 60))
+
+echo -e "${YELLOW}[ACTIVE] Focus Dose Injected: $MINUTES Minutes${NC}"
+echo -e "${RED}[BLOCKING] All Digital Sugar (Distractions) are now restricted.${NC}"
+echo ""
+
+while [ $TOTAL_SECONDS -gt 0 ]; do
+    printf "\r\033[1;32mRemaining Dose: %02d:%02d \033[0m" $((TOTAL_SECONDS/60)) $((TOTAL_SECONDS%60))
+    sleep 1
+    : $((TOTAL_SECONDS--))
+done
+
+echo -e "\n\n${CYAN}[SUCCESS] Dose Completed. Insulin Levels Normalized.${NC}"
+echo -e "${GREEN}[SYSTEM] Restoring full internet access...${NC}"
+
