@@ -1,27 +1,32 @@
-<canvas id="matrix-canvas" style="position: fixed; top: 0; left: 0; z-index: -1;"></canvas>
 
-<script>
-const canvas = document.getElementById('matrix-canvas');
-const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-const letters = "0123456789ABCDEF"; // يمكنك إضافة رموز أخرى هنا
-const fontSize = 16;
-const columns = canvas.width / fontSize;
-const drops = Array(Math.floor(columns)).fill(1);
+<div class="cyber-box">
+    <p class="saj-text">نظامٌ يضبطُ المَسار.. ويحمي العقلَ من الانحدار</p>
+    <p class="saj-text flicker">جرعةٌ توقظُ الانتباه.. وتُنهي عصرَ التِّيهِ والاشتباه</p>
+</div>
 
-function draw() {
-    ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = '#0F0'; // لون النيون الأخضر المميز
-    ctx.font = fontSize + 'px monospace';
-    for (let i = 0; i < drops.length; i++) {
-        const text = letters.charAt(Math.floor(Math.random() * letters.length));
-        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
-        drops[i]++;
-    }
+<style>
+.cyber-box {
+    text-align: center;
+    margin-top: 50px;
+    direction: rtl; /* لضمان تنسيق اللغة العربية من اليمين */
 }
-setInterval(draw, 33);
-</script>
+
+.saj-text {
+    font-family: 'Courier New', monospace;
+    color: #00ff41; /* أخضر ميتريكس */
+    font-size: 1.5rem;
+    text-shadow: 0 0 10px #00ff41;
+    margin: 10px 0;
+}
+
+/* تأثير الوميض (Flicker) */
+.flicker {
+    animation: flicker 2s infinite;
+}
+
+@keyframes flicker {
+    0%, 18%, 22%, 25%, 53%, 57%, 100% { opacity: 1; }
+    20%, 24%, 55% { opacity: 0.2; }
+}
+</style>
 
